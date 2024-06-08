@@ -360,35 +360,6 @@ case "$target" in
         ;;
     "msm8953")
 	start_msm_irqbalance_8939
-        if [ -f /sys/devices/soc0/soc_id ]; then
-            soc_id=`cat /sys/devices/soc0/soc_id`
-        else
-            soc_id=`cat /sys/devices/system/soc/soc0/id`
-        fi
-
-        if [ -f /sys/devices/soc0/hw_platform ]; then
-             hw_platform=`cat /sys/devices/soc0/hw_platform`
-        else
-             hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
-        fi
-        case "$soc_id" in
-             "293" | "304" | "338" | "351" | "349" | "350" )
-                  case "$hw_platform" in
-                       "Surf")
-                                    setprop qemu.hw.mainkeys 0
-                                    ;;
-                       "MTP")
-                                    setprop qemu.hw.mainkeys 0
-                                    ;;
-                       "RCM")
-                                    setprop qemu.hw.mainkeys 0
-                                    ;;
-                       "QRD")
-                                    setprop qemu.hw.mainkeys 0
-                                    ;;
-                  esac
-                  ;;
-       esac
         ;;
     "sdm710")
         if [ -f /sys/devices/soc0/soc_id ]; then
